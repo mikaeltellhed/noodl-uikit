@@ -76,12 +76,6 @@
                     },
                     {
                         "fromId": "2901d3fc-2a9f-bd2b-e353-44996017b1df",
-                        "fromProperty": "Color",
-                        "toId": "7268455a-b4d6-e1fa-22f7-6ee9f899d0e7",
-                        "toProperty": "color"
-                    },
-                    {
-                        "fromId": "2901d3fc-2a9f-bd2b-e353-44996017b1df",
                         "fromProperty": "Label",
                         "toId": "471ce8a6-f7dc-0d12-c8b5-7c6a74d1faa2",
                         "toProperty": "text"
@@ -127,6 +121,36 @@
                         "fromProperty": "touch.tap",
                         "toId": "a806d83c-cca2-fe82-678a-aa8e88f0fa94",
                         "toProperty": "Tap"
+                    },
+                    {
+                        "fromId": "2901d3fc-2a9f-bd2b-e353-44996017b1df",
+                        "fromProperty": "Color",
+                        "toId": "a8f3c279-a104-6591-b5ff-90f47fcc371b",
+                        "toProperty": "color 0"
+                    },
+                    {
+                        "fromId": "70cb7b78-434f-7a0a-8604-c0e6d43d7748",
+                        "fromProperty": "touch.press",
+                        "toId": "ae956c3f-5016-80c4-b6ea-6276f4eca409",
+                        "toProperty": "to-Yes"
+                    },
+                    {
+                        "fromId": "70cb7b78-434f-7a0a-8604-c0e6d43d7748",
+                        "fromProperty": "touch.release",
+                        "toId": "ae956c3f-5016-80c4-b6ea-6276f4eca409",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "ae956c3f-5016-80c4-b6ea-6276f4eca409",
+                        "fromProperty": "Color Blend",
+                        "toId": "a8f3c279-a104-6591-b5ff-90f47fcc371b",
+                        "toProperty": "blendValue"
+                    },
+                    {
+                        "fromId": "a8f3c279-a104-6591-b5ff-90f47fcc371b",
+                        "fromProperty": "result",
+                        "toId": "7268455a-b4d6-e1fa-22f7-6ee9f899d0e7",
+                        "toProperty": "color"
                     }
                 ],
                 "roots": [
@@ -277,8 +301,8 @@
                     {
                         "id": "9e418a36-58b9-5073-a4ec-3318e8ca7fd7",
                         "type": "Boolean",
-                        "x": -154,
-                        "y": 472,
+                        "x": -150,
+                        "y": 553,
                         "parameters": {},
                         "ports": [],
                         "dynamicports": [],
@@ -287,13 +311,26 @@
                     {
                         "id": "ddcc2e66-a9c7-9948-6b82-027112b0bf5b",
                         "type": "Expression",
-                        "x": 50,
-                        "y": 460,
+                        "x": 54,
+                        "y": 541,
                         "parameters": {
                             "expression": "Rounded?(Height/2):3"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Rounded",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "Height",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -310,6 +347,698 @@
                                     "name": "*"
                                 },
                                 "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "a8f3c279-a104-6591-b5ff-90f47fcc371b",
+                        "type": "Color Blend",
+                        "x": 21.235949788432492,
+                        "y": 392.83466849853596,
+                        "parameters": {
+                            "color 1": "#000000",
+                            "blendValue": 0.5,
+                            "color 0": "#0bc160"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "ae956c3f-5016-80c4-b6ea-6276f4eca409",
+                        "type": "States",
+                        "label": "Pressed",
+                        "x": 492.2359497884325,
+                        "y": 250.83466849853596,
+                        "parameters": {
+                            "states": "Yes,No",
+                            "values": "Color Blend",
+                            "value-Yes-Color Blend": 0.5,
+                            "value-No-Color Blend": 0,
+                            "startState": "No"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "number",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Color Blend",
+                                "index": 6
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Yes Values",
+                                "name": "value-Yes-Color Blend",
+                                "displayName": "Color Blend",
+                                "editorName": "Yes|Color Blend",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "Yes Transition",
+                                "name": "transition-Yes",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "Yes Transition",
+                                "name": "duration-Yes",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Yes",
+                                "name": "to-Yes",
+                                "group": "Go to state",
+                                "index": 10
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Yes",
+                                "name": "at-Yes",
+                                "group": "Current state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached Yes",
+                                "name": "reached-Yes",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "No Values",
+                                "name": "value-No-Color Blend",
+                                "displayName": "Color Blend",
+                                "editorName": "No|Color Blend",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "No Transition",
+                                "name": "transition-No",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "No Transition",
+                                "name": "duration-No",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To No",
+                                "name": "to-No",
+                                "group": "Go to state",
+                                "index": 16
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At No",
+                                "name": "at-No",
+                                "group": "Current state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached No",
+                                "name": "reached-No",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Yes",
+                                        "No"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "Start at",
+                                "name": "startState",
+                                "default": "Yes",
+                                "index": 19
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/UI Kit/Forms/Form Text Input",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "4e3ac832-6290-24fa-f0ca-84b81387113b",
+                        "fromProperty": "Label",
+                        "toId": "522ed89e-90db-1bb1-2cc1-d01bbfaf3886",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "2927139b-afbd-b060-682b-4481eeeea9c2",
+                        "fromProperty": "text",
+                        "toId": "8e5980f5-dffc-03c8-b2d3-e1e2a74b454a",
+                        "toProperty": "Text"
+                    },
+                    {
+                        "fromId": "4e3ac832-6290-24fa-f0ca-84b81387113b",
+                        "fromProperty": "Type",
+                        "toId": "2927139b-afbd-b060-682b-4481eeeea9c2",
+                        "toProperty": "type"
+                    },
+                    {
+                        "fromId": "4e3ac832-6290-24fa-f0ca-84b81387113b",
+                        "fromProperty": "In Text",
+                        "toId": "2927139b-afbd-b060-682b-4481eeeea9c2",
+                        "toProperty": "text"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "6cb7740b-0d0b-0fda-8a77-8161172ca057",
+                        "type": "Group",
+                        "version": 2,
+                        "x": 199,
+                        "y": 252,
+                        "parameters": {
+                            "sizeMode": "childHeight",
+                            "height": {
+                                "value": 50,
+                                "unit": "px"
+                            },
+                            "paddingTop": 3,
+                            "paddingBottom": 3
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "9cd17a1a-c25b-bfc6-848a-94b0b9f9befb",
+                                "type": "Stack Layout",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "sizeMode": "childHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "522ed89e-90db-1bb1-2cc1-d01bbfaf3886",
+                                        "type": "Text",
+                                        "version": 2,
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "fontSize": 12,
+                                            "text": "Label",
+                                            "color": "#2f2f30",
+                                            "fontFamily": "UIKit/fonts/Roboto-Regular.ttf",
+                                            "sizeMode": "childHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "64ea6f0c-1c06-efdd-2256-0905e8f52392",
+                                        "type": "Group",
+                                        "version": 2,
+                                        "x": 20,
+                                        "y": 143,
+                                        "parameters": {
+                                            "height": {
+                                                "value": 30,
+                                                "unit": "px"
+                                            },
+                                            "y": 0,
+                                            "sizeMode": "childHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "2660d63c-3200-c48b-fb95-3cad7f705deb",
+                                                "type": "Rectangle",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "color": "#d0d1d5",
+                                                    "alignY": "bottom",
+                                                    "height": {
+                                                        "value": 1,
+                                                        "unit": "px"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "2f17f185-a85b-820f-0042-19d9fc529f19",
+                                                "type": "Group",
+                                                "version": 2,
+                                                "x": 20,
+                                                "y": 92,
+                                                "parameters": {
+                                                    "padding": 0,
+                                                    "sizeMode": "explicit",
+                                                    "height": {
+                                                        "value": 30,
+                                                        "unit": "px"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "2927139b-afbd-b060-682b-4481eeeea9c2",
+                                                        "type": "Text Input",
+                                                        "x": 20,
+                                                        "y": 46,
+                                                        "parameters": {
+                                                            "fontSize": 15,
+                                                            "color": "#515152",
+                                                            "type": "text",
+                                                            "text": "",
+                                                            "fontFamily": "UIKit/fonts/Roboto-Light.ttf"
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4e3ac832-6290-24fa-f0ca-84b81387113b",
+                        "type": "Component Inputs",
+                        "x": -65,
+                        "y": 403,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Label",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            },
+                            {
+                                "name": "Type",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
+                            },
+                            {
+                                "name": "In Text",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 3
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "8e5980f5-dffc-03c8-b2d3-e1e2a74b454a",
+                        "type": "Component Outputs",
+                        "x": 504,
+                        "y": 509,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Text",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/UI Kit/Forms/Panel",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Width",
+                        "toId": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Align X",
+                        "toId": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "toProperty": "alignX"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Align Y",
+                        "toId": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "toProperty": "alignY"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Position X",
+                        "toId": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "toProperty": "x"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Position Y",
+                        "toId": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "toProperty": "y"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Padding",
+                        "toId": "34c22853-7a71-3d18-070e-c06a28376375",
+                        "toProperty": "padding"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Item Spacing",
+                        "toId": "7e75a0ad-afeb-c1de-42fa-43d636f57e5c",
+                        "toProperty": "itemSpacing"
+                    },
+                    {
+                        "fromId": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "fromProperty": "Title",
+                        "toId": "b72a7143-8d62-d194-11be-ed3b7c4ab6a0",
+                        "toProperty": "text"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "68572400-fe70-2cec-24f3-7c7874b599fa",
+                        "type": "Group",
+                        "version": 2,
+                        "x": 196,
+                        "y": 202,
+                        "parameters": {
+                            "height": {
+                                "value": 200,
+                                "unit": "px"
+                            },
+                            "padding": 10,
+                            "sizeMode": "childHeight"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "072aa470-6f18-f579-69c6-54dc6cd0cca4",
+                                "type": "Rectangle",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "color": "#545658",
+                                    "opacity": 0.1,
+                                    "blur": 15
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "3695f245-5f3e-3807-5421-b44d792ce813",
+                                "type": "Rectangle",
+                                "x": 20,
+                                "y": 208,
+                                "parameters": {
+                                    "color": "#ffffff"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "34c22853-7a71-3d18-070e-c06a28376375",
+                                "type": "Group",
+                                "version": 2,
+                                "x": 20,
+                                "y": 138,
+                                "parameters": {
+                                    "padding": 20,
+                                    "sizeMode": "childHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "bf2e3e02-bd66-1978-ae26-3c327f3bdf79",
+                                        "type": "Stack Layout",
+                                        "x": 20,
+                                        "y": 82,
+                                        "parameters": {
+                                            "sizeMode": "childHeight",
+                                            "itemSpacing": 10
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "b72a7143-8d62-d194-11be-ed3b7c4ab6a0",
+                                                "type": "Text",
+                                                "version": 2,
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "fontSize": 50,
+                                                    "color": "#494849",
+                                                    "text": "Title",
+                                                    "sizeMode": "childHeight",
+                                                    "fontFamily": "UIKit/fonts/Roboto-Regular.ttf"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "6f55a6a6-a948-de7b-7028-8793528c959d",
+                                                "type": "Rectangle",
+                                                "x": 20,
+                                                "y": 143,
+                                                "parameters": {
+                                                    "color": "#474747",
+                                                    "height": {
+                                                        "value": 1,
+                                                        "unit": "px"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "7e75a0ad-afeb-c1de-42fa-43d636f57e5c",
+                                                "type": "Stack Layout",
+                                                "x": 275.4508501179944,
+                                                "y": 554.0717688760043,
+                                                "parameters": {
+                                                    "sizeMode": "childHeight",
+                                                    "itemSpacing": 10
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "b93a0e9e-de43-4e11-d22b-db8d2451b908",
+                                                        "type": "Component Children",
+                                                        "x": 270,
+                                                        "y": 408,
+                                                        "parameters": {},
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "0a44d5e8-3ffe-c3c6-8a4b-289b039cd372",
+                        "type": "Component Inputs",
+                        "x": -65,
+                        "y": 201,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Width",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Dimension",
+                                "index": 0
+                            },
+                            {
+                                "name": "Align X",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 1
+                            },
+                            {
+                                "name": "Align Y",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 2
+                            },
+                            {
+                                "name": "Position X",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 3
+                            },
+                            {
+                                "name": "Position Y",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 4
+                            },
+                            {
+                                "name": "Item Spacing",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Layout",
+                                "index": 5
+                            },
+                            {
+                                "name": "Padding",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Layout",
+                                "index": 6
+                            },
+                            {
+                                "name": "Title",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 7
                             }
                         ],
                         "dynamicports": [],
@@ -1825,6 +2554,24 @@
                         "fromProperty": "Option Tapped",
                         "toId": "a2f4d377-d2ad-5c86-dfbf-27f4ccc253ae",
                         "toProperty": "Options Tapped"
+                    },
+                    {
+                        "fromId": "a6fda185-dbac-8fd6-8466-4588b5d5b152",
+                        "fromProperty": "hasPreviousPage",
+                        "toId": "83584e79-61aa-e734-b147-ecf7dd1b8eca",
+                        "toProperty": "Has Previous Page"
+                    },
+                    {
+                        "fromId": "60e8ddfd-c443-1683-c26e-cc1f51c0a75c",
+                        "fromProperty": "Visible",
+                        "toId": "2d3ccd33-f1ef-2dc5-3e1a-ca9d61cd222b",
+                        "toProperty": "visible"
+                    },
+                    {
+                        "fromId": "a6fda185-dbac-8fd6-8466-4588b5d5b152",
+                        "fromProperty": "this",
+                        "toId": "a2f4d377-d2ad-5c86-dfbf-27f4ccc253ae",
+                        "toProperty": "Pages"
                     }
                 ],
                 "roots": [
@@ -1909,7 +2656,7 @@
                                     "name": "*"
                                 },
                                 "group": "Placement",
-                                "index": 3
+                                "index": 2
                             },
                             {
                                 "name": "Align Y",
@@ -1918,7 +2665,7 @@
                                     "name": "*"
                                 },
                                 "group": "Placement",
-                                "index": 4
+                                "index": 3
                             },
                             {
                                 "name": "Position X",
@@ -1927,7 +2674,7 @@
                                     "name": "*"
                                 },
                                 "group": "Placement",
-                                "index": 5
+                                "index": 4
                             },
                             {
                                 "name": "Position Y",
@@ -1936,7 +2683,7 @@
                                     "name": "*"
                                 },
                                 "group": "Placement",
-                                "index": 6
+                                "index": 5
                             },
                             {
                                 "name": "Width",
@@ -1945,7 +2692,7 @@
                                     "name": "*"
                                 },
                                 "group": "Dimensions",
-                                "index": 7
+                                "index": 6
                             },
                             {
                                 "name": "Height",
@@ -1954,7 +2701,7 @@
                                     "name": "*"
                                 },
                                 "group": "Dimensions",
-                                "index": 8
+                                "index": 7
                             },
                             {
                                 "name": "Menu Icon",
@@ -1964,6 +2711,15 @@
                                 },
                                 "group": "Navigation",
                                 "index": 1
+                            },
+                            {
+                                "name": "Visible",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 8
                             }
                         ],
                         "dynamicports": [],
@@ -1972,8 +2728,8 @@
                     {
                         "id": "a2f4d377-d2ad-5c86-dfbf-27f4ccc253ae",
                         "type": "Component Outputs",
-                        "x": 549.7033724743733,
-                        "y": 538.0923032723282,
+                        "x": 561.7033724743733,
+                        "y": 634.0923032723282,
                         "parameters": {},
                         "ports": [
                             {
@@ -1983,6 +2739,14 @@
                                     "name": "*"
                                 },
                                 "index": 1
+                            },
+                            {
+                                "name": "Pages",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
                             }
                         ],
                         "dynamicports": [],
@@ -2072,6 +2836,12 @@
                         "fromProperty": "touch.tap",
                         "toId": "5c2ac450-9f56-13a5-0b67-597e2dead765",
                         "toProperty": "Option Tapped"
+                    },
+                    {
+                        "fromId": "4fea262c-88f2-f286-0ad5-07ec11d7055e",
+                        "fromProperty": "Has Previous Page",
+                        "toId": "222af093-6799-fcb9-ba8f-092db0c95f31",
+                        "toProperty": "prevPage"
                     }
                 ],
                 "roots": [
@@ -2317,6 +3087,14 @@
                                     "name": "*"
                                 },
                                 "index": 4
+                            },
+                            {
+                                "name": "Has Previous Page",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 5
                             }
                         ],
                         "dynamicports": [],
@@ -2405,8 +3183,8 @@
                     {
                         "id": "72d80393-3fa1-42b3-9847-414bef1598cf",
                         "type": "Transition",
-                        "x": 269,
-                        "y": 517,
+                        "x": 238.6184912872984,
+                        "y": 469.2576291657548,
                         "parameters": {},
                         "ports": [],
                         "dynamicports": [],
@@ -2415,13 +3193,26 @@
                     {
                         "id": "222af093-6799-fcb9-ba8f-092db0c95f31",
                         "type": "Expression",
-                        "x": 84,
-                        "y": 528,
+                        "x": -43.31298889132046,
+                        "y": 429.6217813112524,
                         "parameters": {
-                            "expression": "length > 0"
+                            "expression": "length > 0 || prevPage"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "length",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "prevPage",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     }
                 ]
@@ -2671,6 +3462,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -2754,6 +3549,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -2826,7 +3625,20 @@
                             "expression": "selectedIndex === thisIndex"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "selectedIndex",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "thisIndex",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -3168,6 +3980,556 @@
                                 "index": 1
                             }
                         ],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/UI Kit/Popups/Activity Indicator",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "fromProperty": "Rotation",
+                        "toId": "1e9143ab-7c9e-5c0f-f21e-ad042c8a54fe",
+                        "toProperty": "rotationZ"
+                    },
+                    {
+                        "fromId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "fromProperty": "hasReachedEnd",
+                        "toId": "0e4274df-fc46-c592-89fa-8f71fb6909c8",
+                        "toProperty": "flip"
+                    },
+                    {
+                        "fromId": "0e4274df-fc46-c592-89fa-8f71fb6909c8",
+                        "fromProperty": "switchedToOn",
+                        "toId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "toProperty": "replayToEnd"
+                    },
+                    {
+                        "fromId": "0e4274df-fc46-c592-89fa-8f71fb6909c8",
+                        "fromProperty": "switchedToOff",
+                        "toId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "toProperty": "replayToEnd"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Show",
+                        "toId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "toProperty": "to-Yes"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Hide",
+                        "toId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "fromProperty": "Opacity",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "opacity"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Width",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Height",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "height"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Align X",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "alignX"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Align Y",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "alignY"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Position X",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "x"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Position Y",
+                        "toId": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "toProperty": "y"
+                    },
+                    {
+                        "fromId": "4a1637d4-cb44-31c3-02e9-1ae4b4db0566",
+                        "fromProperty": "currentValue",
+                        "toId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "toProperty": "currentState"
+                    },
+                    {
+                        "fromId": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "fromProperty": "Visible",
+                        "toId": "98a0a9a1-549c-684a-48a0-fa67f0ce91bd",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "98a0a9a1-549c-684a-48a0-fa67f0ce91bd",
+                        "fromProperty": "savedValue",
+                        "toId": "4a1637d4-cb44-31c3-02e9-1ae4b4db0566",
+                        "toProperty": "index"
+                    },
+                    {
+                        "fromId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "fromProperty": "at-No",
+                        "toId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "toProperty": "stop"
+                    },
+                    {
+                        "fromId": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "fromProperty": "at-Yes",
+                        "toId": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "toProperty": "replayToEnd"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "9a9e3864-8cb3-fa36-f949-baec53313d36",
+                        "type": "Group",
+                        "version": 2,
+                        "x": 501.9867255057883,
+                        "y": 407.6257511799305,
+                        "parameters": {
+                            "blockTouch": true
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "3a2e5d81-d3a0-104b-2e67-aba987f90375",
+                                "type": "Rectangle",
+                                "x": 20,
+                                "y": 202,
+                                "parameters": {
+                                    "color": "#000000",
+                                    "opacity": 0.2,
+                                    "width": {
+                                        "value": 100,
+                                        "unit": "px"
+                                    },
+                                    "height": {
+                                        "value": 100,
+                                        "unit": "px"
+                                    },
+                                    "cornerRadius": 10,
+                                    "alignX": "center",
+                                    "alignY": "center"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "9829a7f3-15ac-97e9-2fea-5ebede06feb6",
+                                "type": "Circle",
+                                "x": 20,
+                                "y": 248,
+                                "parameters": {
+                                    "color": "#000000",
+                                    "width": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "alignX": "center",
+                                    "alignY": "center",
+                                    "lineWidth": 7,
+                                    "solid": false,
+                                    "arcAngle": 360,
+                                    "opacity": 0.5
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "1e9143ab-7c9e-5c0f-f21e-ad042c8a54fe",
+                                "type": "Circle",
+                                "x": 20,
+                                "y": 294,
+                                "parameters": {
+                                    "color": "#fdfbff",
+                                    "width": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "alignX": "center",
+                                    "alignY": "center",
+                                    "lineWidth": 7,
+                                    "solid": false,
+                                    "arcAngle": 120
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a25a4d2e-487c-0d2e-de7a-9b4909854700",
+                        "type": "Animation",
+                        "x": 286.6084133065877,
+                        "y": 453.5112923437374,
+                        "parameters": {
+                            "Rotation.startMode": "explicit",
+                            "Rotation.endValue": 360,
+                            "duration": 2000,
+                            "Arc Angle.startMode": "explicit",
+                            "Arc Angle.endValue": 360
+                        },
+                        "ports": [
+                            {
+                                "name": "Rotation",
+                                "plug": "output",
+                                "type": {
+                                    "name": "number"
+                                },
+                                "group": "Animation Values",
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "0e4274df-fc46-c592-89fa-8f71fb6909c8",
+                        "type": "Switch",
+                        "x": 287.90879215592975,
+                        "y": 655.2446051133458,
+                        "parameters": {
+                            "onFromStart": false
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "6f8d6cc2-bf47-598f-c3b5-1fd0056e66b1",
+                        "type": "Component Inputs",
+                        "x": -27.274985732958783,
+                        "y": 304.34021553038593,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Show",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 0
+                            },
+                            {
+                                "name": "Hide",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 1
+                            },
+                            {
+                                "name": "Width",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Dimensions",
+                                "index": 2
+                            },
+                            {
+                                "name": "Height",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Dimensions",
+                                "index": 3
+                            },
+                            {
+                                "name": "Align X",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 4
+                            },
+                            {
+                                "name": "Align Y",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 5
+                            },
+                            {
+                                "name": "Position X",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 6
+                            },
+                            {
+                                "name": "Position Y",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Placement",
+                                "index": 7
+                            },
+                            {
+                                "name": "Visible",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 8
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "f4fe644c-e6ce-5451-96a2-e96b17736fdc",
+                        "type": "States",
+                        "label": "Visible",
+                        "x": 286.68043106077187,
+                        "y": 131.60220038160156,
+                        "parameters": {
+                            "states": "Yes,No",
+                            "values": "Opacity",
+                            "value-Yes-Opacity": 1,
+                            "value-No-Opacity": 0,
+                            "startState": "No"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "number",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Opacity",
+                                "index": 6
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Yes Values",
+                                "name": "value-Yes-Opacity",
+                                "displayName": "Opacity",
+                                "editorName": "Yes|Opacity",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "Yes Transition",
+                                "name": "transition-Yes",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "Yes Transition",
+                                "name": "duration-Yes",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Yes",
+                                "name": "to-Yes",
+                                "group": "Go to state",
+                                "index": 10
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Yes",
+                                "name": "at-Yes",
+                                "group": "Current state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached Yes",
+                                "name": "reached-Yes",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "No Values",
+                                "name": "value-No-Opacity",
+                                "displayName": "Opacity",
+                                "editorName": "No|Opacity",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "No Transition",
+                                "name": "transition-No",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "No Transition",
+                                "name": "duration-No",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To No",
+                                "name": "to-No",
+                                "group": "Go to state",
+                                "index": 16
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At No",
+                                "name": "at-No",
+                                "group": "Current state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached No",
+                                "name": "reached-No",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Yes",
+                                        "No"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "Start at",
+                                "name": "startState",
+                                "default": "Yes",
+                                "index": 19
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "4a1637d4-cb44-31c3-02e9-1ae4b4db0566",
+                        "type": "String Selector",
+                        "x": 26.071809845334855,
+                        "y": 159.66307449356796,
+                        "parameters": {
+                            "input 0": "No",
+                            "input 1": "Yes"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "98a0a9a1-549c-684a-48a0-fa67f0ce91bd",
+                        "type": "Boolean",
+                        "x": -177.9183200828037,
+                        "y": 149.5359049226674,
+                        "parameters": {},
+                        "ports": [],
                         "dynamicports": [],
                         "children": []
                     }
@@ -3621,6 +4983,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -3704,6 +5070,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -3793,6 +5163,1132 @@
                         ],
                         "dynamicports": [],
                         "children": []
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/UI Kit/Popups/Success Popup",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "fromProperty": "Title",
+                        "toId": "1f8d5236-5def-1d33-302c-ccec6f42016f",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "fromProperty": "Text",
+                        "toId": "fef214d9-db28-ab36-075a-8567e86d8e50",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "fromProperty": "Button Label",
+                        "toId": "a145fc0d-642f-4a80-85c0-322607b5c47e",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "0a8554c3-aeb4-bc5e-ac1e-3d70868885c2",
+                        "fromProperty": "height",
+                        "toId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "toProperty": "value-No-Y"
+                    },
+                    {
+                        "fromId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "fromProperty": "Y",
+                        "toId": "0a8554c3-aeb4-bc5e-ac1e-3d70868885c2",
+                        "toProperty": "y"
+                    },
+                    {
+                        "fromId": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "fromProperty": "Show",
+                        "toId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "toProperty": "to-Yes"
+                    },
+                    {
+                        "fromId": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "fromProperty": "Hide",
+                        "toId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "5209fac6-582a-d5ba-ad61-af70350b9df0",
+                        "fromProperty": "touch.tap",
+                        "toId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "5209fac6-582a-d5ba-ad61-af70350b9df0",
+                        "fromProperty": "touch.tap",
+                        "toId": "59c653a4-a7f3-8767-dff0-830063f2cc12",
+                        "toProperty": "OK"
+                    },
+                    {
+                        "fromId": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "fromProperty": "at-Yes",
+                        "toId": "75aef32f-d758-6e1d-ce66-d79aafaf6e75",
+                        "toProperty": "blockTouch"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "3c9272bb-dc2b-f293-267e-ce63f5fcdc27",
+                        "type": "Component Inputs",
+                        "x": 197,
+                        "y": 608,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Title",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 0
+                            },
+                            {
+                                "name": "Text",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 1
+                            },
+                            {
+                                "name": "Button Label",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 2
+                            },
+                            {
+                                "name": "Show",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 3
+                            },
+                            {
+                                "name": "Hide",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 4
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "e3fddd69-a486-f89d-e2eb-edddb845a872",
+                        "type": "States",
+                        "label": "Visible",
+                        "x": 268,
+                        "y": 403,
+                        "parameters": {
+                            "states": "Yes,No",
+                            "startState": "No",
+                            "values": "Y",
+                            "value-Yes-Y": 0
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "number",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Y",
+                                "index": 6
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Yes Values",
+                                "name": "value-Yes-Y",
+                                "displayName": "Y",
+                                "editorName": "Yes|Y",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "Yes Transition",
+                                "name": "transition-Yes",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "Yes Transition",
+                                "name": "duration-Yes",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Yes",
+                                "name": "to-Yes",
+                                "group": "Go to state",
+                                "index": 10
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Yes",
+                                "name": "at-Yes",
+                                "group": "Current state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached Yes",
+                                "name": "reached-Yes",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "No Values",
+                                "name": "value-No-Y",
+                                "displayName": "Y",
+                                "editorName": "No|Y",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "No Transition",
+                                "name": "transition-No",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "No Transition",
+                                "name": "duration-No",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To No",
+                                "name": "to-No",
+                                "group": "Go to state",
+                                "index": 16
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At No",
+                                "name": "at-No",
+                                "group": "Current state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached No",
+                                "name": "reached-No",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Yes",
+                                        "No"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "Start at",
+                                "name": "startState",
+                                "default": "Yes",
+                                "index": 19
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "59c653a4-a7f3-8767-dff0-830063f2cc12",
+                        "type": "Component Outputs",
+                        "x": 981,
+                        "y": 660,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "OK",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Signals",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "75aef32f-d758-6e1d-ce66-d79aafaf6e75",
+                        "type": "Group",
+                        "version": 2,
+                        "x": 508.5,
+                        "y": 320.125,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "0a8554c3-aeb4-bc5e-ac1e-3d70868885c2",
+                                "type": "Group",
+                                "version": 2,
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "sizeMode": "childHeight",
+                                    "alignY": "bottom",
+                                    "padding": 5,
+                                    "blockTouch": false
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "b8f24c78-e5e0-8d87-920f-0f4513165004",
+                                        "type": "Group",
+                                        "version": 2,
+                                        "x": 235,
+                                        "y": 365,
+                                        "parameters": {
+                                            "sizeMode": "childHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "2f6626c5-1e0c-45c6-6493-6168885bc2e5",
+                                                "type": "Rectangle",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "color": "#0bc160"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "abbcfb65-0c13-e383-f5ff-362d108031f2",
+                                                "type": "Stack Layout",
+                                                "x": 255,
+                                                "y": 457,
+                                                "parameters": {
+                                                    "sizeMode": "childHeight"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "9146d374-269b-1e11-5aa2-cb8040a5afc2",
+                                                        "type": "Stack Layout",
+                                                        "x": 275,
+                                                        "y": 503,
+                                                        "parameters": {
+                                                            "sizeMode": "childHeight",
+                                                            "padding": 10
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": [
+                                                            {
+                                                                "id": "6271c83e-b6bc-0934-2255-a0ce2fe2f091",
+                                                                "type": "Group",
+                                                                "version": 2,
+                                                                "x": 295,
+                                                                "y": 549,
+                                                                "parameters": {
+                                                                    "sizeMode": "childHeight"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": [
+                                                                    {
+                                                                        "id": "50f18c48-336f-db38-4b48-0af7d8fe21cf",
+                                                                        "type": "Group",
+                                                                        "version": 2,
+                                                                        "x": 315,
+                                                                        "y": 595,
+                                                                        "parameters": {
+                                                                            "sizeMode": "childHeight",
+                                                                            "padding": 3
+                                                                        },
+                                                                        "ports": [],
+                                                                        "dynamicports": [],
+                                                                        "children": [
+                                                                            {
+                                                                                "id": "1f8d5236-5def-1d33-302c-ccec6f42016f",
+                                                                                "type": "Text",
+                                                                                "version": 2,
+                                                                                "x": 20,
+                                                                                "y": 46,
+                                                                                "parameters": {
+                                                                                    "fontFamily": "UIKit/fonts/Roboto-Regular.ttf",
+                                                                                    "text": "NOTIFICATION",
+                                                                                    "fontSize": 14,
+                                                                                    "color": "#fefdff"
+                                                                                },
+                                                                                "ports": [],
+                                                                                "dynamicports": [],
+                                                                                "children": []
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "8f995f0a-6590-92de-90e9-9a950a7b0bc6",
+                                                                "type": "Group",
+                                                                "version": 2,
+                                                                "x": 295,
+                                                                "y": 738,
+                                                                "parameters": {
+                                                                    "sizeMode": "childHeight"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": [
+                                                                    {
+                                                                        "id": "c29377fe-9aa5-82e6-6383-ff3b271b5ddc",
+                                                                        "type": "Group",
+                                                                        "version": 2,
+                                                                        "x": 315,
+                                                                        "y": 784,
+                                                                        "parameters": {
+                                                                            "sizeMode": "childHeight",
+                                                                            "padding": 3
+                                                                        },
+                                                                        "ports": [],
+                                                                        "dynamicports": [],
+                                                                        "children": [
+                                                                            {
+                                                                                "id": "fef214d9-db28-ab36-075a-8567e86d8e50",
+                                                                                "type": "Text",
+                                                                                "version": 2,
+                                                                                "x": 20,
+                                                                                "y": 46,
+                                                                                "parameters": {
+                                                                                    "fontFamily": "UIKit/fonts/Roboto-Light.ttf",
+                                                                                    "text": "You successfully did something!",
+                                                                                    "fontSize": 12,
+                                                                                    "color": "#fefdff",
+                                                                                    "sizeMode": "childHeight"
+                                                                                },
+                                                                                "ports": [],
+                                                                                "dynamicports": [],
+                                                                                "children": []
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "5209fac6-582a-d5ba-ad61-af70350b9df0",
+                                                        "type": "Group",
+                                                        "version": 2,
+                                                        "x": 275,
+                                                        "y": 927,
+                                                        "parameters": {
+                                                            "height": {
+                                                                "value": 50,
+                                                                "unit": "px"
+                                                            }
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": [
+                                                            {
+                                                                "id": "0e8a16b7-e750-6c91-920a-e0cddf5434b7",
+                                                                "type": "Rectangle",
+                                                                "x": 20,
+                                                                "y": 82,
+                                                                "parameters": {
+                                                                    "color": "#0dad57"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "id": "a145fc0d-642f-4a80-85c0-322607b5c47e",
+                                                                "type": "Text",
+                                                                "version": 2,
+                                                                "x": 20,
+                                                                "y": 128,
+                                                                "parameters": {
+                                                                    "fontSize": 12,
+                                                                    "fontFamily": "UIKit/fonts/Roboto-Light.ttf",
+                                                                    "text": "OK",
+                                                                    "alignX": "center",
+                                                                    "alignY": "center"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/UI Kit/Popups/Warning Popup",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "fromProperty": "Title",
+                        "toId": "314c0443-3998-4c62-5d52-b742939ebec7",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "fromProperty": "Text",
+                        "toId": "8b143144-7cf9-f971-7d61-f3d7227ad03f",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "fromProperty": "Button Label",
+                        "toId": "4a9270f2-db00-0699-a3ef-62577c2006e9",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "a083a4ae-130d-59fe-8267-26fb90d14b91",
+                        "fromProperty": "height",
+                        "toId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "toProperty": "value-No-Y"
+                    },
+                    {
+                        "fromId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "fromProperty": "Y",
+                        "toId": "a083a4ae-130d-59fe-8267-26fb90d14b91",
+                        "toProperty": "y"
+                    },
+                    {
+                        "fromId": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "fromProperty": "Show",
+                        "toId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "toProperty": "to-Yes"
+                    },
+                    {
+                        "fromId": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "fromProperty": "Hide",
+                        "toId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "ff94728f-577a-f292-5ad3-764f8f4b529d",
+                        "fromProperty": "touch.tap",
+                        "toId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "toProperty": "to-No"
+                    },
+                    {
+                        "fromId": "ff94728f-577a-f292-5ad3-764f8f4b529d",
+                        "fromProperty": "touch.tap",
+                        "toId": "32886be0-c3ac-d8ac-4d9b-b9d3ce2538bc",
+                        "toProperty": "OK"
+                    },
+                    {
+                        "fromId": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "fromProperty": "at-Yes",
+                        "toId": "974864d7-54f8-1da9-446e-cbcda75da805",
+                        "toProperty": "blockTouch"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "ec21eb84-36d4-a8a2-05b3-5449beaa66b6",
+                        "type": "Component Inputs",
+                        "x": -124,
+                        "y": 511,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Title",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 0
+                            },
+                            {
+                                "name": "Text",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 1
+                            },
+                            {
+                                "name": "Button Label",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Appearance",
+                                "index": 2
+                            },
+                            {
+                                "name": "Show",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 3
+                            },
+                            {
+                                "name": "Hide",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Actions",
+                                "index": 4
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "a104d820-d585-5627-080b-2c7365b14caa",
+                        "type": "States",
+                        "label": "Visible",
+                        "x": -88,
+                        "y": 301,
+                        "parameters": {
+                            "states": "Yes,No",
+                            "startState": "No",
+                            "values": "Y",
+                            "value-Yes-Y": 0
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "number",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Y",
+                                "index": 6
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Yes Values",
+                                "name": "value-Yes-Y",
+                                "displayName": "Y",
+                                "editorName": "Yes|Y",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "Yes Transition",
+                                "name": "transition-Yes",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "Yes Transition",
+                                "name": "duration-Yes",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Yes",
+                                "name": "to-Yes",
+                                "group": "Go to state",
+                                "index": 10
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Yes",
+                                "name": "at-Yes",
+                                "group": "Current state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached Yes",
+                                "name": "reached-Yes",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "No Values",
+                                "name": "value-No-Y",
+                                "displayName": "Y",
+                                "editorName": "No|Y",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "easeOut",
+                                            "label": "Ease Out"
+                                        },
+                                        {
+                                            "value": "easeIn",
+                                            "label": "Ease In"
+                                        },
+                                        {
+                                            "value": "linear",
+                                            "label": "Linear"
+                                        },
+                                        {
+                                            "value": "easeInOut",
+                                            "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
+                                        }
+                                    ]
+                                },
+                                "default": "easeOut",
+                                "displayName": "Easing Curve",
+                                "group": "No Transition",
+                                "name": "transition-No",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "default": 300,
+                                "displayName": "Duration",
+                                "group": "No Transition",
+                                "name": "duration-No",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To No",
+                                "name": "to-No",
+                                "group": "Go to state",
+                                "index": 16
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At No",
+                                "name": "at-No",
+                                "group": "Current state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "Has Reached No",
+                                "name": "reached-No",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Yes",
+                                        "No"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "Start at",
+                                "name": "startState",
+                                "default": "Yes",
+                                "index": 19
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "32886be0-c3ac-d8ac-4d9b-b9d3ce2538bc",
+                        "type": "Component Outputs",
+                        "x": 660,
+                        "y": 563,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "OK",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Signals",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "974864d7-54f8-1da9-446e-cbcda75da805",
+                        "type": "Group",
+                        "version": 2,
+                        "x": 171.5,
+                        "y": 208.125,
+                        "parameters": {
+                            "blockTouch": false
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "a083a4ae-130d-59fe-8267-26fb90d14b91",
+                                "type": "Group",
+                                "version": 2,
+                                "x": 215,
+                                "y": 236,
+                                "parameters": {
+                                    "sizeMode": "childHeight",
+                                    "alignY": "bottom",
+                                    "padding": 5,
+                                    "blockTouch": false
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "640565c5-12f8-31f0-5d60-6ecdb7e78922",
+                                        "type": "Group",
+                                        "version": 2,
+                                        "x": 235,
+                                        "y": 365,
+                                        "parameters": {
+                                            "sizeMode": "childHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "186f263e-d5f3-e518-79f7-851050b4d99c",
+                                                "type": "Rectangle",
+                                                "x": 255,
+                                                "y": 411,
+                                                "parameters": {
+                                                    "color": "#f99500"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "d97e1708-3a10-6ff6-4000-0f16c1ac1046",
+                                                "type": "Stack Layout",
+                                                "x": 255,
+                                                "y": 457,
+                                                "parameters": {
+                                                    "sizeMode": "childHeight"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "706a524e-640d-f483-fd60-4754a58916b0",
+                                                        "type": "Stack Layout",
+                                                        "x": 275,
+                                                        "y": 503,
+                                                        "parameters": {
+                                                            "sizeMode": "childHeight",
+                                                            "padding": 10
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": [
+                                                            {
+                                                                "id": "526dd138-a630-2694-3caa-6e4549b0b144",
+                                                                "type": "Group",
+                                                                "version": 2,
+                                                                "x": 295,
+                                                                "y": 549,
+                                                                "parameters": {
+                                                                    "sizeMode": "childHeight"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": [
+                                                                    {
+                                                                        "id": "02825cda-36da-b6fa-f822-598df7a92917",
+                                                                        "type": "Group",
+                                                                        "version": 2,
+                                                                        "x": 315,
+                                                                        "y": 595,
+                                                                        "parameters": {
+                                                                            "sizeMode": "childHeight",
+                                                                            "padding": 3
+                                                                        },
+                                                                        "ports": [],
+                                                                        "dynamicports": [],
+                                                                        "children": [
+                                                                            {
+                                                                                "id": "314c0443-3998-4c62-5d52-b742939ebec7",
+                                                                                "type": "Text",
+                                                                                "version": 2,
+                                                                                "x": 335,
+                                                                                "y": 641,
+                                                                                "parameters": {
+                                                                                    "fontFamily": "UIKit/fonts/Roboto-Regular.ttf",
+                                                                                    "text": "WARNING",
+                                                                                    "fontSize": 14,
+                                                                                    "color": "#fefdff"
+                                                                                },
+                                                                                "ports": [],
+                                                                                "dynamicports": [],
+                                                                                "children": []
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "db72198f-5cdf-2f9d-2623-9a1003587326",
+                                                                "type": "Group",
+                                                                "version": 2,
+                                                                "x": 295,
+                                                                "y": 738,
+                                                                "parameters": {
+                                                                    "sizeMode": "childHeight"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": [
+                                                                    {
+                                                                        "id": "f91c9e84-cea9-d6bb-c722-6d69ebc7ab3b",
+                                                                        "type": "Group",
+                                                                        "version": 2,
+                                                                        "x": 315,
+                                                                        "y": 784,
+                                                                        "parameters": {
+                                                                            "sizeMode": "childHeight",
+                                                                            "padding": 3
+                                                                        },
+                                                                        "ports": [],
+                                                                        "dynamicports": [],
+                                                                        "children": [
+                                                                            {
+                                                                                "id": "8b143144-7cf9-f971-7d61-f3d7227ad03f",
+                                                                                "type": "Text",
+                                                                                "version": 2,
+                                                                                "x": 335,
+                                                                                "y": 830,
+                                                                                "parameters": {
+                                                                                    "fontFamily": "UIKit/fonts/Roboto-Light.ttf",
+                                                                                    "text": "Best check your self you are not looking too good!",
+                                                                                    "fontSize": 12,
+                                                                                    "color": "#fefdff",
+                                                                                    "sizeMode": "childHeight"
+                                                                                },
+                                                                                "ports": [],
+                                                                                "dynamicports": [],
+                                                                                "children": []
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "ff94728f-577a-f292-5ad3-764f8f4b529d",
+                                                        "type": "Group",
+                                                        "version": 2,
+                                                        "x": 275,
+                                                        "y": 927,
+                                                        "parameters": {
+                                                            "height": {
+                                                                "value": 50,
+                                                                "unit": "px"
+                                                            }
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": [
+                                                            {
+                                                                "id": "a15aacdf-3f4d-9a3c-d614-420ffdf3ee4c",
+                                                                "type": "Rectangle",
+                                                                "x": 295,
+                                                                "y": 1009,
+                                                                "parameters": {
+                                                                    "color": "#df8600"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "id": "4a9270f2-db00-0699-a3ef-62577c2006e9",
+                                                                "type": "Text",
+                                                                "version": 2,
+                                                                "x": 295,
+                                                                "y": 1055,
+                                                                "parameters": {
+                                                                    "fontSize": 12,
+                                                                    "fontFamily": "UIKit/fonts/Roboto-Light.ttf",
+                                                                    "text": "OK",
+                                                                    "alignX": "center",
+                                                                    "alignY": "center"
+                                                                },
+                                                                "ports": [],
+                                                                "dynamicports": [],
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -4134,7 +6630,20 @@
                             "expression": "sliderSize - handleSize"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "sliderSize",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "handleSize",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4146,7 +6655,20 @@
                             "expression": "x + handleWidth/2"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "x",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "handleWidth",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4547,7 +7069,14 @@
                             "expression": "Height / 2"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Height",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4559,7 +7088,14 @@
                             "expression": "Height / 10"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Height",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4571,7 +7107,20 @@
                             "expression": "Width - Height"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Width",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "Height",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4583,7 +7132,14 @@
                             "expression": "Radius - 2"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Radius",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4610,7 +7166,20 @@
                             "expression": "1 - (X / Max)"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "X",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "Max",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4736,6 +7305,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -4801,6 +7374,10 @@
                                         {
                                             "value": "easeInOut",
                                             "label": "Ease In Out"
+                                        },
+                                        {
+                                            "value": "cubicBezier",
+                                            "label": "Cubic Bezier"
                                         }
                                     ]
                                 },
@@ -4892,7 +7469,14 @@
                             "expression": "S==='On'?1:0"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "S",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4904,7 +7488,14 @@
                             "expression": "S?'On':'Off'"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "S",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -4992,7 +7583,14 @@
                             "expression": "Index===1"
                         },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "Index",
+                                "type": "number",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     }
                 ]
